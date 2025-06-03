@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madengue Epoh Junior - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #333;
+            --gray-color: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 120px);
+        }
+        
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            background-color: var(--light-color);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skills {
+            margin-top: 2rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-name {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* CV Page Styles */
+        .cv-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cv-container h1 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        
+        .cv-container h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        .contact-info {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-weight: bold;
+        }
+        
+        .date-location {
+            font-style: italic;
+            color: var(--gray-color);
+            margin-bottom: 10px;
+        }
+        
+        .cv-container ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        
+        .cv-container li {
+            margin-bottom: 5px;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        
+        .quote-author {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        /* Contact Page Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 150px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Madengue Epoh</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Home Page -->
+        <section id="home" class="hero">
+            <h1>Madengue Epoh Junior</h1>
+            <p>Chef de produit expérimenté avec un historique avéré dans le développement et la gestion de produits tout au long de leur cycle de vie.</p>
+            <a href="cv.html" class="btn">Voir mon CV</a>
+        </section>
+
+        <!-- About Page (hidden by default) -->
+        <section id="about" style="display: none;">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>À propos de moi</h2>
+                    <p>Je suis un chef de produit passionné, créatif et orienté résultats avec une expérience dans le développement et la gestion de produits. Mon approche combine une analyse rigoureuse du marché avec une compréhension approfondie des besoins clients pour créer des solutions innovantes.</p>
+                    
+                    <div class="skills">
+                        <h3>Mes compétences</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">Développement produit</div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Gestion de projet</div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Analyse de marché</div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Leadership d'équipe</div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x500" alt="Madengue Epoh Junior">
+                </div>
+            </div>
+        </section>
+
+        <!-- CV Page (hidden by default) -->
+        <section id="cv" style="display: none;">
+            <div class="cv-container">
+                <h1>Madengue Epoh Junior</h1>
+                
+                <div class="contact-info">
+                    Douala, Bonabéri, Cameroun • Jrjuvi12@gmail.com • +237 692 93 26 55
+                </div>
+                
+                <h2>Profil</h2>
+                <p>Chef de produit expérimenté avec un historique avéré dans le développement et la gestion de produits tout au long de leur cycle de vie. Passionné, créatif et orienté résultats. Compétent en leadership d'équipe et collaboration avec des équipes pluridisciplinaires. Passionné par la conception de solutions innovantes qui améliorent la satisfaction client.</p>
+                
+                <h2>Formation</h2>
+                <div class="job-title">Master en Administration des Affaires (MBA), <span class="company">Université</span></div>
+                <div class="date-location">08/2020 – 07/2021 | Douala, Cameroun</div>
+                
+                <div class="job-title">Licence en Ingénierie des Technologies de l'Information, <span class="company">Université Technique</span></div>
+                <div class="date-location">09/2023 – 07/2024 | Douala, Cameroun</div>
+                
+                <h2>Langues</h2>
+                <ul>
+                    <li>Français</li>
+                    <li>Anglais</li>
+                    <li>Allemand</li>
+                </ul>
+                
+                <h2>Récompenses</h2>
+                <ul>
+                    <li>Prix de l'Innovation, <span class="company">The Tech GmbH</span></li>
+                    <li>Chef de Produit de l'Année, <span class="company">Delta Solutions</span></li>
+                </ul>
+                
+                <h2>Expérience Professionnelle</h2>
+                <div class="job-title">Chef de Produit, <span class="company">Technite Gmbh</span></div>
+                <div class="date-location">08/2021 – 07/2022 | Douala, Cameroun</div>
+                <ul>
+                    <li>Dirigé une équipe pluridisciplinaire de 10 personnes dans le développement d'une nouvelle gamme de produits, entraînant une augmentation de 20% du chiffre d'affaires</li>
+                    <li>Réalisé des analyses de marché et des études concurrentielles pour identifier de nouvelles opportunités de produits et étendre le portefeuille</li>
+                </ul>
+                
+                <div class="job-title">Spécialiste Produit, <span class="company">Solutions Inc</span></div>
+                <div class="date-location">04/2023 – 07/2024 | Douala, Cameroun</div>
+                <ul>
+                    <li>Développé et mis en œuvre une stratégie produit pour le marché africain, entraînant une croissance de 25% du chiffre d'affaires</li>
+                    <li>Animé des sessions de formation et des présentations pour les clients et les équipes commerciales pour améliorer la connaissance des produits</li>
+                </ul>
+                
+                <h2>Compétences</h2>
+                <ul>
+                    <li>Développement et stratégie produit</li>
+                    <li>Gestion de projet et leadership d'équipe</li>
+                    <li>Analyse des besoins clients et études de marché</li>
+                    <li>Méthodes agiles et Scrum</li>
+                    <li>Analyse de données</li>
+                </ul>
+                
+                <h2>Citation Préférée</h2>
+                <div class="quote">
+                    Le meilleur produit est celui qui résout un problème pour le client.
+                    <div class="quote-author">ERIC Ries</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page (hidden by default) -->
+        <section id="contact" style="display: none;">
+            <h2>Contactez-moi</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Madengue Epoh Junior. Tous droits réservés.</p>
+        <ul class="social-links">
+            <li><a href="#" aria-label="LinkedIn">🔗</a></li>
+            <li><a href="#" aria-label="Twitter">🐦</a></li>
+            <li><a href="#" aria-label="GitHub">💻</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Simple page routing
+            function showPage(pageId) {
+                document.querySelectorAll('main section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(pageId).style.display = 'block';
+            }
+            
+            // Set home as default page
+            showPage('home');
+            
+            // Navigation click handlers
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('href').replace('.html', '');
+                    showPage(page);
+                    
+                    // Update URL without reload
+                    history.pushState(null, null, `${page}.html`);
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Handle browser back/forward
+            window.addEventListener('popstate', function() {
+                const path = window.location.pathname.split('/').pop().replace('.html', '') || 'home';
+                showPage(path);
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Merci pour votre message! Je vous répondrai dès que possible.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
